@@ -11,6 +11,14 @@
     treemap()
       .year(latestYear)
       ("#treemap", data);
+
+    const firstYear = d3.min(data, d => d.year);
+    d3.select("#bumpchart-title").text(`Agency rank by net cost, FY${firstYear}–FY${latestYear}`);
+
+    bumpChart()
+      .width(800)
+      .height(420)
+      ("#bumpchart", data);
   });
 
 })());
