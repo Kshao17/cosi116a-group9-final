@@ -7,10 +7,14 @@
 
     const latestYear = d3.max(data, d => d.year);
     d3.select("#treemap-title").text(`Share of total net cost, FY${latestYear}`);
+    const myLegend = legend();
+    myLegend("#legend");
 
-    treemap()
-      .year(latestYear)
-      ("#treemap", data);
+    const myTreemap = treemap().year(latestYear);
+    myTreemap("#treemap", data);
+
+    dispatcher.on("selectAgency.treemap", () => myTreemap.highlight());
+    dispatcher.on("selectAgency.legend", () => myLegend.highlight());
 
     const firstYear = d3.min(data, d => d.year);
     d3.select("#bumpchart-title").text(`Agency rank by net cost, FY${firstYear}–FY${latestYear}`);
