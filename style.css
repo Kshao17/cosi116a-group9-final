@@ -80,3 +80,55 @@ h1, h2, h3 {
 
 #treemap { max-width: 1000px; margin: 0 auto; }
 #bumpchart { max-width: 1000px; margin: 0 auto; }
+
+/* Row above the charts: year slider, then the selection chip */
+.controls {
+  max-width: 1000px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Fiscal year slider */
+.year-slider {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 14px sans-serif;
+}
+.year-slider label { font-weight: bold; }
+.year-slider input { flex: 1; cursor: pointer; }
+.year-slider .year-end { color: #777; }
+.year-slider .year-badge {
+  background: #222;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-weight: bold;
+}
+
+/* "Selected: X ×" chip; click it to clear the selection */
+.selection-chip {
+  border: none;
+  border-radius: 10px;
+  padding: 3px 12px;
+  font: bold 14px sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Hover tooltip */
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 6px 10px;
+  font: 13px sans-serif;
+  white-space: nowrap;
+}

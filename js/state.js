@@ -1,8 +1,9 @@
 const state = {
-  selectedAgency: null  
+  selectedAgency: null,
+  selectedYear: null    // set to the latest year when the data loads
 };
 
-const dispatcher = d3.dispatch("selectAgency");
+const dispatcher = d3.dispatch("selectAgency", "selectYear");
 
 const FADED_GRAY = "#D9D9D9";
 
@@ -12,7 +13,13 @@ function selectAgency(agency) {
   dispatcher.call("selectAgency", null, state.selectedAgency);
 }
 
-// Agency color when it is selected 
+// Called by the fiscal year slider; tells every view the year changed
+function selectYear(year) {
+  state.selectedYear = year;
+  dispatcher.call("selectYear", null, year);
+}
+
+// Agency color when it is selected
 function colorFor(agency) {
   const s = state.selectedAgency;
   return (s === null || s === agency) ? AGENCY_COLOR(agency) : FADED_GRAY;
