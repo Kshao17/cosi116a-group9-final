@@ -2,15 +2,16 @@
 <html lang="en">
 
 <!-- Metadata -->
+
 <head>
   <meta charset="utf-8">
-  
+
   <!-- Title -->
   <title>Project Team #: Topic, COSI 116A F26</title>
-  
+
   <!-- CSS Styling -->
   <link rel="stylesheet" href="style.css">
- 
+
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
@@ -23,37 +24,47 @@
 </head>
 
 <!-- Main page content -->
+
 <body>
 
   <!-- Your writeup goes here -->
-  <div class = "content-column">
-  
-    <h1>Project Team 9: U.S. Federal Agency Net Cost, COSI 116A F26</h1>
-    
-    <p><strong>Brandon Zhao</strong>, <strong>Yiqi Shao</strong>, <strong>Viridia Weiss</strong></p>
-    
-    <p>Project-long Course Project as part of COSI 116A: Information Visualization, taught by <a href="https://cs.brandeis.edu/~dylan/">Prof. Dylan Cashman</a>, <a href="https://cs.brandeis.edu/">Brandeis University</a>.</p>
-    
-    
-    <h1>Motivation</h1>
-        
-    <p>The U.S. federal government reports trillions of dollars in net cost every year, but the official financial reports are long tables that are hard for the public to read. Voters, students, and journalists often hear that "most of the budget goes to a few agencies" without an easy way to see which agencies those are or how that has changed over time.</p>
+  <div class="content-column">
 
-    <p>Our visualization is built for members of the public who want a quick, clear picture of where federal money goes. It answers three main questions:</p>
+    <h1>Project Team 9: U.S. Federal Agency Net Cost, COSI 116A F26</h1>
+
+    <p><strong>Brandon Zhao</strong>, <strong>Yiqi Shao</strong>, <strong>Viridia Weiss</strong></p>
+
+    <p>Project-long Course Project as part of COSI 116A: Information Visualization, taught by <a
+        href="https://cs.brandeis.edu/~dylan/">Prof. Dylan Cashman</a>, <a href="https://cs.brandeis.edu/">Brandeis
+        University</a>.</p>
+
+
+    <h1>Motivation</h1>
+
+    <p>The U.S. federal government reports trillions of dollars in net cost every year, but the official financial
+      reports are long tables that are hard for the public to read. Voters, students, and journalists often hear that
+      "most of the budget goes to a few agencies" without an easy way to see which agencies those are or how that has
+      changed over time.</p>
+
+    <p>Our visualization is built for members of the public who want a quick, clear picture of where federal money goes.
+      It answers three main questions:</p>
     <ul>
       <li>Which agencies make up the largest share of federal net cost in a given year?</li>
       <li>How have agency rankings changed from FY2016 to FY2025?</li>
       <li>How has one agency's net cost grown or shrunk over the past decade?</li>
     </ul>
 
-<p>To answer these questions, we link three views. A treemap shows each agency's share of total net cost, a bump chart shows how rankings shift over time, and a bar chart shows the yearly history of any agency the user selects. Clicking an agency highlights it across all three views, so users can move from the big picture to the details of a single agency.</p>
-    
+    <p>To answer these questions, we link three views. A treemap shows each agency's share of total net cost, a bump
+      chart shows how rankings shift over time, and a bar chart shows the yearly history of any agency the user selects.
+      Clicking an agency highlights it across all three views, so users can move from the big picture to the details of
+      a single agency.</p>
+
     <h1>Visualization</h1>
-    
+
     <p><em>Include the interactive visualization as part of this page. Static example follows.</em></p>
-    
+
   </div>
-  
+
   <!-- Your visualization here -->
   <div class="vis-holder">
     <!-- Controls: year slider and the "Selected: X ×" chip -->
@@ -68,53 +79,75 @@
 
     <h3 id="bumpchart-title"></h3>
     <div id="bumpchart"></div>
+
+    <h3 id="barchart-title">Agency net cost by year</h3>
+    <div id="barchart"></div>
   </div>
-  
+
   <!-- Your writeup goes here -->
-  <div class = "content-column">
+  <div class="content-column">
 
     <h1>Demo Video</h1>
-    
-    <p><em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag. Put your video file in the <code>files</code> folder and update the file name below.</em></p>
-    
+
+    <p><em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag. Put your video file in the <code>files</code>
+        folder and update the file name below.</em></p>
+
     <video controls width="100%">
       <source src="files/demo.mp4" type="video/mp4">
       <p>Your browser doesn't support HTML5 video. Here is
-       a <a href="files/demo.mp4">link to the video</a> instead.</p>
+        a <a href="files/demo.mp4">link to the video</a> instead.</p>
     </video>
 
     <h1>Visualization explanation</h1>
-    
-    <p><em>Final visualization screenshots (PNG images), design justifications, UI walk-through, and linked presentation slides.</em></p>
+
+    <p><em>Final visualization screenshots (PNG images), design justifications, UI walk-through, and linked presentation
+        slides.</em></p>
 
     <h1>Data Analysis</h1>
 
-    <p>Our data comes from the U.S. Treasury's <a href="https://fiscaldata.treasury.gov/datasets/u-s-government-financial-report/statements-of-net-cost">Statements of Net Cost</a>, part of the Financial Report of the U.S. Government. It is audited accounting data, which differs from the cash outlays reported in budget tables. Each row is one agency in one fiscal year, with costs measured in billions of dollars. We use fiscal years 2016–2025.</p>
+    <p>Our data comes from the U.S. Treasury's <a
+        href="https://fiscaldata.treasury.gov/datasets/u-s-government-financial-report/statements-of-net-cost">Statements
+        of Net Cost</a>, part of the Financial Report of the U.S. Government. It is audited accounting data, which
+      differs from the cash outlays reported in budget tables. Each row is one agency in one fiscal year, with costs
+      measured in billions of dollars. We use fiscal years 2016–2025.</p>
 
     <p>The fields we use are:</p>
     <ul>
       <li><strong>Statement Fiscal Year</strong>: the year the costs belong to.</li>
       <li><strong>Fiscal Year</strong>: the year of the report the row comes from.</li>
       <li><strong>Agency Name</strong>: the federal agency or reporting category.</li>
-      <li><strong>Net Cost (in Billions)</strong>: gross cost minus earned revenue, adjusted for changes in actuarial assumptions.</li>
+      <li><strong>Net Cost (in Billions)</strong>: gross cost minus earned revenue, adjusted for changes in actuarial
+        assumptions.</li>
     </ul>
-    <p>The dataset also includes Gross Cost, Earned Revenue, Change in Assumptions, a Restatement Flag, and several date fields, which we do not use in the current views.</p>
+    <p>The dataset also includes Gross Cost, Earned Revenue, Change in Assumptions, a Restatement Flag, and several date
+      fields, which we do not use in the current views.</p>
 
     <p><strong>Preprocessing.</strong> We clean the data in <code>js/data.js</code> when the page loads:</p>
     <ol>
-      <li><strong>Remove restated duplicates.</strong> Each yearly report also repeats the previous year's numbers, so adding everything double counts most years. We keep only rows where the Statement Fiscal Year equals the report's Fiscal Year.</li>
-      <li><strong>Remove totals.</strong> We drop the Total and Subtotal rows, which would otherwise count every agency twice.</li>
-      <li><strong>Merge agency names.</strong> Some agencies appear under more than one name. We map these to one short label each.</li>
-      <li><strong>Group small agencies.</strong> We keep the eight agencies with the largest net cost and combine the rest into "Other," which keeps the color encoding readable.</li>
+      <li><strong>Remove restated duplicates.</strong> Each yearly report also repeats the previous year's numbers, so
+        adding everything double counts most years. We keep only rows where the Statement Fiscal Year equals the
+        report's Fiscal Year.</li>
+      <li><strong>Remove totals.</strong> We drop the Total and Subtotal rows, which would otherwise count every agency
+        twice.</li>
+      <li><strong>Merge agency names.</strong> Some agencies appear under more than one name. We map these to one short
+        label each.</li>
+      <li><strong>Group small agencies.</strong> We keep the eight agencies with the largest net cost and combine the
+        rest into "Other," which keeps the color encoding readable.</li>
     </ol>
 
-    <p>After cleaning, the data has one row per agency group per year (9 groups * 10 years). We checked the results against our earlier Tableau prototype: the FY2025 total is about $7.3 trillion, led by HHS ($1,886B), SSA ($1,655B), and Defense ($1,237B).</p>
+    <p>After cleaning, the data has one row per agency group per year (9 groups * 10 years). We checked the results
+      against our earlier Tableau prototype: the FY2025 total is about $7.3 trillion, led by HHS ($1,886B), SSA
+      ($1,655B), and Defense ($1,237B).</p>
 
-    <p><strong>Limitations.</strong> A few small agencies have negative net cost. A treemap cannot draw negative areas, so these are absorbed into "Other." Large jumps in some years, such as VA's spike in FY2022, come from changes in actuarial assumptions rather than new spending. The data also does not include federal revenue, so we cannot show deficits.</p>
+    <p><strong>Limitations.</strong> A few small agencies have negative net cost. A treemap cannot draw negative areas,
+      so these are absorbed into "Other." Large jumps in some years, such as VA's spike in FY2022, come from changes in
+      actuarial assumptions rather than new spending. The data also does not include federal revenue, so we cannot show
+      deficits.</p>
 
     <h1>Task Analysis</h1>
 
-    <p>Based on our task analysis, we ranked the domain tasks our users care about most. Each task is classified with the low-level, mid-level, and high-level task typology from class.</p>
+    <p>Based on our task analysis, we ranked the domain tasks our users care about most. Each task is classified with
+      the low-level, mid-level, and high-level task typology from class.</p>
 
     <table>
       <thead>
@@ -127,55 +160,106 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>Compare each agency's share of total net cost</td><td>Compare, Summarize</td><td>Browse</td><td>Discover</td></tr>
-        <tr><td>2</td><td>See how agency rankings and costs change over time</td><td>Identify, Compare</td><td>Explore</td><td>Discover</td></tr>
-        <tr><td>3</td><td>Compare one agency's net cost across fiscal years</td><td>Compare</td><td>Lookup</td><td>Discover</td></tr>
-        <tr><td>4</td><td>Compare healthcare and military spending over time</td><td>Identify</td><td>Browse</td><td>Discover</td></tr>
-        <tr><td>5</td><td>Compare federal revenue and spending</td><td>Compare</td><td>Explore</td><td>Discover</td></tr>
+        <tr>
+          <td>1</td>
+          <td>Compare each agency's share of total net cost</td>
+          <td>Compare, Summarize</td>
+          <td>Browse</td>
+          <td>Discover</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>See how agency rankings and costs change over time</td>
+          <td>Identify, Compare</td>
+          <td>Explore</td>
+          <td>Discover</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Compare one agency's net cost across fiscal years</td>
+          <td>Compare</td>
+          <td>Lookup</td>
+          <td>Discover</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Compare healthcare and military spending over time</td>
+          <td>Identify</td>
+          <td>Browse</td>
+          <td>Discover</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Compare federal revenue and spending</td>
+          <td>Compare</td>
+          <td>Explore</td>
+          <td>Discover</td>
+        </tr>
       </tbody>
     </table>
 
-<p>Our design focuses on the top three tasks. The treemap supports Task 1 by showing each agency's share of net cost for the selected year. The bump chart supports Task 2 by showing how agency rankings change from FY2016 to FY2025. Clicking an agency highlights it in every view and fills in a bar chart of its net cost by year, which supports Task 3. Users can also complete Task 4 by selecting HHS and then Defense. Task 5 is out of scope because the Statements of Net Cost data does not include federal revenue.</p>
+    <p>Our design focuses on the top three tasks. The treemap supports Task 1 by showing each agency's share of net cost
+      for the selected year. The bump chart supports Task 2 by showing how agency rankings change from FY2016 to FY2025.
+      Clicking an agency highlights it in every view and fills in a bar chart of its net cost by year, which supports
+      Task 3. Users can also complete Task 4 by selecting HHS and then Defense. Task 5 is out of scope because the
+      Statements of Net Cost data does not include federal revenue.</p>
 
     <h1>Design Process</h1>
-    
+
     <p>Our design went through several rounds of sketching and revision.</p>
 
-    <p><strong>Data exploration.</strong> We first explored the Statements of Net Cost data in Tableau with a bar chart, a line chart, a treemap, and a dual-panel chart of gross cost and changes in assumptions. Two problems stood out. A line chart with every agency had too many colors to tell apart, and most small agencies were squeezed together near zero. These findings shaped our later decisions to focus on the largest agencies and to group the rest as "Other."</p>
+    <p><strong>Data exploration.</strong> We first explored the Statements of Net Cost data in Tableau with a bar chart,
+      a line chart, a treemap, and a dual-panel chart of gross cost and changes in assumptions. Two problems stood out.
+      A line chart with every agency had too many colors to tell apart, and most small agencies were squeezed together
+      near zero. These findings shaped our later decisions to focus on the largest agencies and to group the rest as
+      "Other."</p>
 
-    <p><strong>Preliminary sketches.</strong> Each team member then drew three sketches. From these, we chose three favorites: Brandon's bump chart with a linked bar chart, which shows how agency rankings change over time; Viridia's treemap, which shows each agency's share of the total; and Yiqi's ranked bar chart, which links a selected agency to a second view of its yearly costs.</p>
+    <p><strong>Preliminary sketches.</strong> Each team member then drew three sketches. From these, we chose three
+      favorites: Brandon's bump chart with a linked bar chart, which shows how agency rankings change over time;
+      Viridia's treemap, which shows each agency's share of the total; and Yiqi's ranked bar chart, which links a
+      selected agency to a second view of its yearly costs.</p>
 
-    <p><strong>Final sketch.</strong> For our final design, we combined Viridia's treemap with Brandon's bump chart and linked bar chart, and added a fiscal year slider. We dropped the ranked bar chart because the bump chart already shows ranking, but kept its idea of highlighting the selected agency in every view. We drew the final sketch in two states, a default view and a view after clicking an agency, to show how brushing and linking and details on demand would work. Classmates and the teaching staff reviewed this sketch in our peer review session.</p>
+    <p><strong>Final sketch.</strong> For our final design, we combined Viridia's treemap with Brandon's bump chart and
+      linked bar chart, and added a fiscal year slider. We dropped the ranked bar chart because the bump chart already
+      shows ranking, but kept its idea of highlighting the selected agency in every view. We drew the final sketch in
+      two states, a default view and a view after clicking an agency, to show how brushing and linking and details on
+      demand would work. Classmates and the teaching staff reviewed this sketch in our peer review session.</p>
 
-    <p><strong>Changes during implementation.</strong> While building the visualization in D3, we made several further changes:</p>
+    <p><strong>Changes during implementation.</strong> While building the visualization in D3, we made several further
+      changes:</p>
     <ul>
       <li>We narrowed the time range to FY2016–FY2025 so the bump chart is easier to read.</li>
-      <li>We limited distinct colors to the eight largest agencies and used one shared color scale in every view, so each agency is easy to recognize across charts.</li>
-      <li>When an agency is selected, it keeps its color while all other agencies fade to gray. This keeps the focus on the selected agency without adding new colors.</li>
+      <li>We limited distinct colors to the eight largest agencies and used one shared color scale in every view, so
+        each agency is easy to recognize across charts.</li>
+      <li>When an agency is selected, it keeps its color while all other agencies fade to gray. This keeps the focus on
+        the selected agency without adding new colors.</li>
       <li>We placed a shared color legend above the charts, and clicking an agency in the legend selects it too.</li>
     </ul>
 
-<p>We plan to run usability tests with classmates once all three views are linked, and we will describe the feedback and resulting changes here.</p>
+    <p>We plan to run usability tests with classmates once all three views are linked, and we will describe the feedback
+      and resulting changes here.</p>
 
 
     <h1>Conclusion</h1>
 
     <p><em>Short summary of work completed and areas for improvement/future-work.</em></p>
-    
+
     <p><em>Expectation: Meaningfully wraps up project and has good future directions.</em></p>
 
-    
+
     <h1>Acknowledgments</h1>
 
-    <p><em>List here where any code, packages/libraries, text, images, designs, slides, etc. that you leverage come from. Include any use of LLMs and AIs.</em></p>
-    
+    <p><em>List here where any code, packages/libraries, text, images, designs, slides, etc. that you leverage come
+        from. Include any use of LLMs and AIs.</em></p>
+
     <ul>
       <li><a href="https://d3js.org/">D3: Data-Driven Documents</a> by Mike Bostock.</li>
-      <li>Bump chart, year slider, selection chip, and tooltip code were written with help from Claude (Anthropic) for fixing problems, getting ideas, and learning how to write it, then reviewed and tested.</li>
+      <li>Bump chart, year slider, selection chip, and tooltip code were written with help from Claude (Anthropic) for
+        fixing problems, getting ideas, and learning how to write it, then reviewed and tested.</li>
     </ul>
-    
+
   </div>
-  
+
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
   <script src="lib/d3.v7/d3.v7.min.js"></script>
   <script src="js/data.js"></script>
@@ -186,6 +270,8 @@
   <script src="js/selectionchip.js"></script>
   <script src="js/treemap.js"></script>
   <script src="js/bumpchart.js"></script>
+  <script src="js/barchart.js"></script>
   <script src="js/visualization.js"></script>
 </body>
+
 </html>
