@@ -5,11 +5,13 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Title -->
   <title>Project Team 9: U.S. Federal Agency Net Cost, COSI 116A F26</title>
 
   <!-- CSS Styling -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 
   <!-- Favicons -->
@@ -26,11 +28,22 @@
 <!-- Main page content -->
 
 <body>
-  <span id="forkongithub"><a href="https://github.com/Kshao17/cosi116a-group9-final">Fork me on GitHub</a></span>
+  <nav class="navbar bg-white border-bottom" aria-label="Main navigation">
+    <div class="container-fluid page-shell d-flex flex-wrap gap-3 py-2">
+      <a class="navbar-brand fw-bold" href="#">Federal Net Cost</a>
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <a class="nav-link" href="#visualization">Explore the data</a>
+        <a class="nav-link" href="#analysis">About the data</a>
+        <a class="btn btn-outline-primary btn-sm" href="https://github.com/Kshao17/cosi116a-group9-final">View on GitHub</a>
+      </div>
+    </div>
+  </nav>
+  <main>
   <!-- Your writeup goes here -->
-  <div class="content-column">
+  <div class="content-column container">
 
-    <h1>Project Team 9: U.S. Federal Agency Net Cost, COSI 116A F26</h1>
+    <p class="text-primary fw-semibold small text-uppercase mb-3">COSI 116A · Team 9 · FY2016–2025</p>
+    <h1 class="display-4 fw-bold mb-4">U.S. Federal Agency Net Cost</h1>
 
     <p><strong>Brandon Zhao</strong>, <strong>Yiqi Shao</strong>, <strong>Viridia Weiss</strong></p>
 
@@ -39,7 +52,7 @@
         University</a>.</p>
 
 
-    <h1>Motivation</h1>
+    <h2 class="section-heading">Motivation</h2>
 
     <p>The U.S. federal government reports trillions of dollars in net cost every year, but the official financial
       reports are long tables that are hard for the public to read. Voters, students, and journalists often hear that
@@ -59,51 +72,59 @@
       Clicking an agency highlights it across all three views, so users can move from the big picture to the details of
       a single agency.</p>
 
-    <h1>Visualization</h1>
+    <h2 class="section-heading">Visualization</h2>
 
-    <p><em>Include the interactive visualization as part of this page. Static example follows.</em></p>
+    <p class="text-body-secondary">Choose a fiscal year, then select an agency to explore its share, rank, and yearly costs. Click outside the controls to return to the total view.</p>
 
   </div>
 
   <!-- Your visualization here -->
-  <div class="vis-holder">
+  <div id="visualization" class="vis-holder container-fluid page-shell">
     <!-- Controls: year slider and the "Selected: X ×" chip -->
-    <div class="controls">
+    <div class="controls bg-white border rounded-4 shadow-sm p-3 p-md-4">
       <div id="year-slider"></div>
       <div id="selection-chip"></div>
     </div>
 
-    <h3 id="treemap-title"></h3>
-    <div id="legend"></div>
-    <div id="treemap"></div>
+    <div class="charts">
+      <section class="chart-panel card border-0 shadow-sm p-3 p-md-4" aria-labelledby="treemap-title">
+        <h3 class="h5 fw-semibold" id="treemap-title"></h3>
+        <div id="legend"></div>
+        <div id="treemap"></div>
+      </section>
 
-    <h3 id="bumpchart-title"></h3>
-    <div id="bumpchart"></div>
+      <section class="chart-panel card border-0 shadow-sm p-3 p-md-4" aria-labelledby="bumpchart-title">
+        <h3 class="h5 fw-semibold" id="bumpchart-title"></h3>
+        <div id="bumpchart"></div>
+      </section>
 
-    <h3 id="barchart-title">Agency net cost by year</h3>
-    <div id="barchart"></div>
+      <section class="chart-panel card border-0 shadow-sm p-3 p-md-4" aria-labelledby="barchart-title">
+        <h3 class="h5 fw-semibold" id="barchart-title">Total net cost by year</h3>
+        <div id="barchart"></div>
+      </section>
+    </div>
   </div>
 
   <!-- Your writeup goes here -->
-  <div class="content-column">
+  <div class="content-column container report-content">
 
-    <h1>Demo Video</h1>
+    <h2 class="section-heading">Demo Video</h2>
 
     <p><em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag. Put your video file in the <code>files</code>
         folder and update the file name below.</em></p>
 
-    <video controls width="100%">
+    <video class="rounded-3 shadow-sm" controls width="100%">
       <source src="files/demo.mp4" type="video/mp4">
       <p>Your browser doesn't support HTML5 video. Here is
         a <a href="files/demo.mp4">link to the video</a> instead.</p>
     </video>
 
-    <h1>Visualization explanation</h1>
+    <h2 class="section-heading">Visualization explanation</h2>
 
     <p><em>Final visualization screenshots (PNG images), design justifications, UI walk-through, and linked presentation
         slides.</em></p>
 
-    <h1>Data Analysis</h1>
+    <h2 id="analysis" class="section-heading">Data Analysis</h2>
 
     <p>Our data comes from the U.S. Treasury's <a
         href="https://fiscaldata.treasury.gov/datasets/u-s-government-financial-report/statements-of-net-cost">Statements
@@ -144,12 +165,13 @@
       actuarial assumptions rather than new spending. The data also does not include federal revenue, so we cannot show
       deficits.</p>
 
-    <h1>Task Analysis</h1>
+    <h2 class="section-heading">Task Analysis</h2>
 
     <p>Based on our task analysis, we ranked the domain tasks our users care about most. Each task is classified with
       the low-level, mid-level, and high-level task typology from class.</p>
 
-    <table>
+    <div class="table-responsive border rounded-3 my-4">
+    <table class="table table-striped table-hover align-middle mb-0">
       <thead>
         <tr>
           <th>Rank</th>
@@ -197,6 +219,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
     <p>Our design focuses on the top three tasks. The treemap supports Task 1 by showing each agency's share of net cost
       for the selected year. The bump chart supports Task 2 by showing how agency rankings change from FY2016 to FY2025.
@@ -204,7 +227,7 @@
       Task 3. Users can also complete Task 4 by selecting HHS and then Defense. Task 5 is out of scope because the
       Statements of Net Cost data does not include federal revenue.</p>
 
-    <h1>Design Process</h1>
+    <h2 class="section-heading">Design Process</h2>
 
     <p>Our design went through several rounds of sketching and revision.</p>
 
@@ -240,19 +263,22 @@
       and resulting changes here.</p>
 
 
-    <h1>Conclusion</h1>
+    <h2 class="section-heading">Conclusion</h2>
 
     <p><em>Short summary of work completed and areas for improvement/future-work.</em></p>
 
     <p><em>Expectation: Meaningfully wraps up project and has good future directions.</em></p>
 
 
-    <h1>Acknowledgments</h1>
+    <h2 class="section-heading">Acknowledgments</h2>
 
     <p><em>List here where any code, packages/libraries, text, images, designs, slides, etc. that you leverage come
         from. Include any use of LLMs and AIs.</em></p>
 
     <ul>
+      <li><a href="https://getbootstrap.com/">Bootstrap</a> for responsive layout and page styling.</li>
+      <li>OpenAI Codex assisted with Bootstrap styling, responsive chart layouts, fiscal year timeline controls,
+        and updates to chart selection and axis behavior.</li>
       <li><a href="https://d3js.org/">D3: Data-Driven Documents</a> by Mike Bostock.</li>
       <li>Bump chart, year slider, selection chip, and tooltip code were written with help from Claude (Anthropic) for
         fixing problems, getting ideas, and learning how to write it, then reviewed and tested. Bar chart and
@@ -261,6 +287,11 @@
     </ul>
 
   </div>
+
+  </main>
+  <footer class="border-top bg-white py-4 mt-5">
+    <div class="container text-center text-body-secondary small">COSI 116A · Brandeis University · Project Team 9</div>
+  </footer>
 
   <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
   <script src="lib/d3.v7/d3.v7.min.js"></script>

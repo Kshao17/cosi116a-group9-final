@@ -77,7 +77,18 @@ function bumpChart() {
       .attr("transform", "rotate(-90)")
       .attr("text-anchor", "end")
       .attr("dx", "-0.6em").attr("dy", "-0.5em")
-      .style("font", "9px sans-serif");
+      .style("font", "9px sans-serif")
+      .style("cursor", "pointer")
+      .attr("role", "button")
+      .attr("tabindex", 0)
+      .attr("aria-label", d => `Select fiscal year ${d}`)
+      .on("click", (event, year) => selectYear(year))
+      .on("keydown", (event, year) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          selectYear(year);
+        }
+      });
 
     // Y axis
     g.append("g")
@@ -95,11 +106,35 @@ function bumpChart() {
       .text("Rank by net cost");
 
     // Selected year marker
-    yearMarker = g.append("line")
+    yearMarker = g.append("g").attr("class", "year-marker");
+    yearMarker.append("line")
       .attr("y1", -6).attr("y2", innerH)
       .attr("stroke", "#333")
       .attr("stroke-dasharray", "4 3")
       .style("pointer-events", "none");
+
+    // A wider transparent target makes the dashed marker easy to grab.
+    yearMarker.append("line")
+      .attr("y1", -6).attr("y2", innerH)
+      .attr("stroke", "transparent")
+      .attr("stroke-width", 20)
+      .style("pointer-events", "stroke")
+      .style("cursor", "grab")
+      .style("touch-action", "none")
+      .call(d3.drag()
+        .container(() => g.node())
+        .subject(() => ({ x: x(state.selectedYear), y: 0 }))
+        .on("start", function () {
+          hideTooltip();
+          d3.select(this).style("cursor", "grabbing");
+        })
+        .on("drag", event => {
+          const nearestYear = d3.least(years, year => Math.abs(x(year) - event.x));
+          if (nearestYear !== state.selectedYear) selectYear(nearestYear);
+        })
+        .on("end", function () {
+          d3.select(this).style("cursor", "grab");
+        }));
 
     // Line generator
     const line = d3.line()
@@ -180,6 +215,7 @@ function bumpChart() {
   // Update colors for the current selection
   chart.highlight = function () {
     svg.selectAll("g.agency").filter(d => isColored(d.agency)).raise();
+    yearMarker.raise();
 
     svg.selectAll("path.line")
       .transition().duration(300)
@@ -199,9 +235,7 @@ function bumpChart() {
   // Move the year marker to the selected year
   chart.showYear = function () {
     const year = state.selectedYear;
-    yearMarker
-      .transition().duration(300)
-      .attr("x1", x(year)).attr("x2", x(year));
+    yearMarker.attr("transform", `translate(${x(year)},0)`);
     svg.selectAll(".x-axis .tick text")
       .style("font-weight", d => d === year ? "bold" : "normal");
   };

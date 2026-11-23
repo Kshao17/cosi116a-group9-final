@@ -41,6 +41,19 @@
     dispatcher.on("selectAgency.bumpchart", () => myBumpChart.highlight());
     dispatcher.on("selectYear.bumpchart", () => myBumpChart.showYear());
 
+    // Clicking ordinary page content returns all views to the total overview.
+    d3.select(document).on("click.clearAgency", (event) => {
+      const interactive = [
+        "a", "button", "input", "select", "textarea", "label", "summary",
+        "video", "audio", "[role='button']", "[role='slider']", "[tabindex]",
+        "[contenteditable]:not([contenteditable='false'])",
+        ".legend-item", "g.cell", "g.agency", ".bar", ".year-marker"
+      ].join(",");
+      // Use the original path: year selection can redraw the clicked chart.
+      const isInteractive = event.composedPath().some(node => node.matches?.(interactive));
+      if (!isInteractive && state.selectedAgency !== null) selectAgency(null);
+    });
+
     // Slider updates the treemap: redraw it (and its title) for the new year
     dispatcher.on("selectYear.treemap", () => {
       d3.select("#treemap-title").text(`Share of total net cost, FY${state.selectedYear}`);
